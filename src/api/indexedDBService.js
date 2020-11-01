@@ -1,11 +1,11 @@
-import { openDb } from 'idb';
+import { openDB } from 'idb';
 
 const dbPromise = _ => {
   if (!('indexedDB' in window)) {
     throw new Error('Browser does not support IndexedDB');
   }
 
-  return openDb('VueTodoDB', 1, upgradeDb => {
+  return openDB('VueTodoDB', 1, upgradeDb => {
     if (!upgradeDb.objectStoreNames.contains('todos')) {
       upgradeDb.createObjectStore('todos');
     }
